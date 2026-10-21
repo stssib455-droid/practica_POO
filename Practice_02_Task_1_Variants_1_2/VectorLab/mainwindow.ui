@@ -1,0 +1,1038 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowTitle">
+   <string>VectorLab — Практика 2 · Задание 1 · Варианты 1 и 2</string>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1240</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="rootLayout">
+    <property name="leftMargin">
+     <number>16</number>
+    </property>
+    <property name="rightMargin">
+     <number>16</number>
+    </property>
+    <property name="topMargin">
+     <number>16</number>
+    </property>
+    <property name="bottomMargin">
+     <number>16</number>
+    </property>
+    <property name="spacing">
+     <number>10</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="headerLayout">
+      <item>
+       <layout class="QVBoxLayout" name="titlesLayout">
+        <property name="spacing">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="eyebrow">
+          <property name="text">
+           <string>ПРАКТИКА 02   /   ЗАДАНИЕ 1   /   ВАРИАНТЫ 1 + 2</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="title">
+          <property name="text">
+           <string>Лаборатория векторов</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="subtitle">
+          <property name="text">
+           <string>Скорость БПЛА и перемещение по маршруту · единая модель Vector3D</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="headerSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="copyButton">
+        <property name="text">
+         <string>Копировать расчёт</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="metricsLayout">
+      <item>
+       <widget class="QFrame" name="mainCard">
+        <layout class="QVBoxLayout" name="mainLayout">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="mainCaption">
+           <property name="text">
+            <string>МОДУЛЬ СКОРОСТИ</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="mainValue">
+           <property name="text">
+            <string>—</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="mainHint">
+           <property name="text">
+            <string />
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="extraCard">
+        <layout class="QVBoxLayout" name="extraLayout">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="extraCaption">
+           <property name="text">
+            <string>УПРАВЛЯЮЩИЙ ВЕКТОР</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="extraValue">
+           <property name="text">
+            <string>—</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="extraHint">
+           <property name="text">
+            <string />
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="statusCard">
+        <layout class="QVBoxLayout" name="statusLayout">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="statusCaption">
+           <property name="text">
+            <string>ПРОВЕРКА ВЫЧИСЛЕНИЙ</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="statusValue">
+           <property name="text">
+            <string>—</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="statusHint">
+           <property name="text">
+            <string />
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="bodyLayout" stretch="0,1">
+      <item>
+       <widget class="QScrollArea" name="controlScroll">
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>325</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>325</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <widget class="QFrame" name="controlPanel">
+         <property name="minimumSize">
+          <size>
+           <width>300</width>
+           <height>330</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="controlLayout">
+          <property name="spacing">
+           <number>8</number>
+          </property>
+          <item>
+           <widget class="QTabWidget" name="variantTabs">
+            <widget class="QWidget" name="velocityTab">
+             <attribute name="title">
+              <string>01 · Скорость</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="velocityTabLayout">
+              <property name="spacing">
+               <number>8</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="airTitle">
+                <property name="text">
+                 <string>Воздушная скорость, м/с</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="airRow">
+                <item>
+                 <layout class="QVBoxLayout" name="airXCol">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="airX">
+                    <property name="minimum">
+                     <double>-1000000.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1000000.0</double>
+                    </property>
+                    <property name="value">
+                     <double>10</double>
+                    </property>
+                    <property name="decimals">
+                     <number>3</number>
+                    </property>
+                    <property name="keyboardTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>70</width>
+                      <height>29</height>
+                     </size>
+                    </property>
+                    <property name="prefix">
+                     <string>X: </string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="airYCol">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="airY">
+                    <property name="minimum">
+                     <double>-1000000.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1000000.0</double>
+                    </property>
+                    <property name="value">
+                     <double>4</double>
+                    </property>
+                    <property name="decimals">
+                     <number>3</number>
+                    </property>
+                    <property name="keyboardTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>70</width>
+                      <height>29</height>
+                     </size>
+                    </property>
+                    <property name="prefix">
+                     <string>Y: </string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="airZCol">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="airZ">
+                    <property name="minimum">
+                     <double>-1000000.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1000000.0</double>
+                    </property>
+                    <property name="value">
+                     <double>-1</double>
+                    </property>
+                    <property name="decimals">
+                     <number>3</number>
+                    </property>
+                    <property name="keyboardTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>70</width>
+                      <height>29</height>
+                     </size>
+                    </property>
+                    <property name="prefix">
+                     <string>Z: </string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLabel" name="windTitle">
+                <property name="text">
+                 <string>Скорость ветра, м/с</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="windRow">
+                <item>
+                 <layout class="QVBoxLayout" name="windXCol">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="windX">
+                    <property name="minimum">
+                     <double>-1000000.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1000000.0</double>
+                    </property>
+                    <property name="value">
+                     <double>2</double>
+                    </property>
+                    <property name="decimals">
+                     <number>3</number>
+                    </property>
+                    <property name="keyboardTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>70</width>
+                      <height>29</height>
+                     </size>
+                    </property>
+                    <property name="prefix">
+                     <string>X: </string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="windYCol">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="windY">
+                    <property name="minimum">
+                     <double>-1000000.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1000000.0</double>
+                    </property>
+                    <property name="value">
+                     <double>-1</double>
+                    </property>
+                    <property name="decimals">
+                     <number>3</number>
+                    </property>
+                    <property name="keyboardTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>70</width>
+                      <height>29</height>
+                     </size>
+                    </property>
+                    <property name="prefix">
+                     <string>Y: </string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="windZCol">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="windZ">
+                    <property name="minimum">
+                     <double>-1000000.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1000000.0</double>
+                    </property>
+                    <property name="value">
+                     <double>0</double>
+                    </property>
+                    <property name="decimals">
+                     <number>3</number>
+                    </property>
+                    <property name="keyboardTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>70</width>
+                      <height>29</height>
+                     </size>
+                    </property>
+                    <property name="prefix">
+                     <string>Z: </string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="factorRow">
+                <item>
+                 <widget class="QLabel" name="factorCaption">
+                  <property name="text">
+                   <string>Коэффициент k</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDoubleSpinBox" name="factor">
+                  <property name="minimum">
+                   <double>-10</double>
+                  </property>
+                  <property name="maximum">
+                   <double>10</double>
+                  </property>
+                  <property name="value">
+                   <double>0.8</double>
+                  </property>
+                  <property name="decimals">
+                   <number>3</number>
+                  </property>
+                  <property name="keyboardTracking">
+                   <bool>false</bool>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>70</width>
+                    <height>29</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <property name="bottomMargin">
+               <number>8</number>
+              </property>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="routeTab">
+             <attribute name="title">
+              <string>02 · Маршрут</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="routeTabLayout">
+              <property name="spacing">
+               <number>8</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="startTitle">
+                <property name="text">
+                 <string>Начальная точка S, м</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="startRow">
+                <item>
+                 <layout class="QVBoxLayout" name="startXCol">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="startX">
+                    <property name="minimum">
+                     <double>-1000000.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1000000.0</double>
+                    </property>
+                    <property name="value">
+                     <double>0</double>
+                    </property>
+                    <property name="decimals">
+                     <number>3</number>
+                    </property>
+                    <property name="keyboardTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>70</width>
+                      <height>29</height>
+                     </size>
+                    </property>
+                    <property name="prefix">
+                     <string>X: </string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="startYCol">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="startY">
+                    <property name="minimum">
+                     <double>-1000000.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1000000.0</double>
+                    </property>
+                    <property name="value">
+                     <double>0</double>
+                    </property>
+                    <property name="decimals">
+                     <number>3</number>
+                    </property>
+                    <property name="keyboardTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>70</width>
+                      <height>29</height>
+                     </size>
+                    </property>
+                    <property name="prefix">
+                     <string>Y: </string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="startZCol">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="startZ">
+                    <property name="minimum">
+                     <double>-1000000.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1000000.0</double>
+                    </property>
+                    <property name="value">
+                     <double>100</double>
+                    </property>
+                    <property name="decimals">
+                     <number>3</number>
+                    </property>
+                    <property name="keyboardTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>70</width>
+                      <height>29</height>
+                     </size>
+                    </property>
+                    <property name="prefix">
+                     <string>Z: </string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLabel" name="finishTitle">
+                <property name="text">
+                 <string>Конечная точка F, м</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="finishRow">
+                <item>
+                 <layout class="QVBoxLayout" name="finishXCol">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="finishX">
+                    <property name="minimum">
+                     <double>-1000000.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1000000.0</double>
+                    </property>
+                    <property name="value">
+                     <double>300</double>
+                    </property>
+                    <property name="decimals">
+                     <number>3</number>
+                    </property>
+                    <property name="keyboardTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>70</width>
+                      <height>29</height>
+                     </size>
+                    </property>
+                    <property name="prefix">
+                     <string>X: </string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="finishYCol">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="finishY">
+                    <property name="minimum">
+                     <double>-1000000.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1000000.0</double>
+                    </property>
+                    <property name="value">
+                     <double>200</double>
+                    </property>
+                    <property name="decimals">
+                     <number>3</number>
+                    </property>
+                    <property name="keyboardTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>70</width>
+                      <height>29</height>
+                     </size>
+                    </property>
+                    <property name="prefix">
+                     <string>Y: </string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="finishZCol">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="finishZ">
+                    <property name="minimum">
+                     <double>-1000000.0</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1000000.0</double>
+                    </property>
+                    <property name="value">
+                     <double>150</double>
+                    </property>
+                    <property name="decimals">
+                     <number>3</number>
+                    </property>
+                    <property name="keyboardTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>70</width>
+                      <height>29</height>
+                     </size>
+                    </property>
+                    <property name="prefix">
+                     <string>Z: </string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <property name="bottomMargin">
+               <number>8</number>
+              </property>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="presetButton">
+            <property name="text">
+             <string>Данные из задания</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="zeroButton">
+            <property name="text">
+             <string>Нулевой пример</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="inputNote">
+            <property name="text">
+             <string>Расчёт обновляется при изменении данных. Отрицательные компоненты допустимы.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="sceneCard">
+        <layout class="QVBoxLayout" name="sceneLayout">
+         <property name="spacing">
+          <number>5</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="viewToolbar">
+           <item>
+            <widget class="QLabel" name="sceneTitle">
+             <property name="text">
+              <string>Геометрия векторов</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="viewSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QComboBox" name="projectionCombo">
+             <item>
+              <property name="text">
+               <string>3D · аксонометрия</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Плоскость XY</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Плоскость XZ</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Плоскость YZ</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="VectorScene" name="vectorScene">
+           <property name="minimumSize">
+            <size>
+             <width>420</width>
+             <height>200</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="angleLayout">
+           <item>
+            <widget class="QLabel" name="yawCaption">
+             <property name="text">
+              <string>Поворот</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSlider" name="yawSlider">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="minimum">
+              <number>0</number>
+             </property>
+             <property name="maximum">
+              <number>360</number>
+             </property>
+             <property name="value">
+              <number>325</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="yawValue">
+             <property name="text">
+              <string>325°</string>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>38</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="pitchCaption">
+             <property name="text">
+              <string>Наклон</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSlider" name="pitchSlider">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="minimum">
+              <number>10</number>
+             </property>
+             <property name="maximum">
+              <number>80</number>
+             </property>
+             <property name="value">
+              <number>25</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="pitchValue">
+             <property name="text">
+              <string>25°</string>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>38</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="legendLabel">
+           <property name="text">
+            <string>Синий — БПЛА   ·   оранжевый — ветер   ·   бирюзовый — результат   ·   фиолетовый — управление</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="bottomLayout" stretch="3,2">
+      <item>
+       <widget class="QFrame" name="tableCard">
+        <layout class="QVBoxLayout" name="tableLayout">
+         <property name="spacing">
+          <number>4</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="tableTitle">
+           <property name="text">
+            <string>Координаты и модули</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="resultTable">
+           <property name="minimumSize">
+            <size>
+             <width>440</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>140</height>
+            </size>
+           </property>
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectRows</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="formulaCard">
+        <layout class="QVBoxLayout" name="formulaLayout">
+         <property name="spacing">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="formulaTitle">
+           <property name="text">
+            <string>Как получается результат</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="formulaLabel">
+           <property name="text">
+            <string />
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="feedbackLabel">
+      <property name="text">
+       <string>Учебная математическая модель · данные задаются вручную · масштаб схемы подбирается автоматически</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <property name="styleSheet">
+   <string>
+QMainWindow, QWidget#centralwidget {background:#edf2f8;}
+QWidget {font-family:"Segoe UI";font-size:9pt;color:#233652;}
+QLabel#eyebrow {color:#5276aa;font-size:8pt;letter-spacing:1px;}
+QLabel#title {font-size:25pt;font-weight:700;color:#142b4d;}
+QLabel#subtitle, QLabel#inputNote, QLabel#feedbackLabel {color:#74849c;font-size:8pt;}
+QFrame#mainCard, QFrame#extraCard, QFrame#statusCard, QFrame#controlPanel,
+QFrame#sceneCard, QFrame#tableCard, QFrame#formulaCard {background:white;border:1px solid #dce5f1;border-radius:10px;}
+QLabel#mainCaption, QLabel#extraCaption, QLabel#statusCaption {color:#74849c;font-size:8pt;}
+QLabel#mainValue, QLabel#extraValue, QLabel#statusValue {font-size:21pt;font-weight:600;color:#1664b8;}
+QLabel#mainHint, QLabel#extraHint, QLabel#statusHint {font-size:8pt;color:#74849c;}
+QLabel#sceneTitle, QLabel#tableTitle, QLabel#formulaTitle {font-size:11pt;font-weight:600;}
+QLabel#airTitle, QLabel#windTitle, QLabel#startTitle, QLabel#finishTitle {font-weight:600;}
+QLabel#legendLabel, QLabel#velocityNote, QLabel#routeNote {font-size:8pt;color:#5c6f89;}
+QPushButton {background:#f7faff;border:1px solid #cbd9eb;border-radius:6px;padding:7px 12px;}
+QPushButton:hover {background:#e9f1fc;border-color:#8badd6;}
+QPushButton#presetButton {background:#246ac4;color:white;border-color:#246ac4;}
+QDoubleSpinBox, QComboBox {background:white;border:1px solid #cad8eb;border-radius:4px;padding:4px 3px;}
+QDoubleSpinBox:focus, QComboBox:focus {border-color:#246ac4;}
+QTabWidget::pane {border:0;background:white;}
+QTabBar::tab {background:#edf2f8;color:#687d98;border-radius:5px;padding:8px 10px;margin:2px;}
+QTabBar::tab:selected {background:#dceafa;color:#155eac;font-weight:600;}
+QTableWidget {border:0;background:white;gridline-color:#edf2f8;alternate-background-color:#f6f9fd;selection-background-color:#e3eefb;selection-color:#142b4d;}
+QHeaderView::section {background:#f1f5fb;color:#69809f;border:0;padding:5px;}
+QSlider::groove:horizontal {height:4px;background:#e3eaf4;border-radius:2px;}
+QSlider::handle:horizontal {background:#3577c8;width:12px;margin:-4px 0;border-radius:6px;}
+</string>
+  </property>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>VectorScene</class>
+   <extends>QWidget</extends>
+   <header>vector_scene.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources />
+ <connections />
+</ui>
