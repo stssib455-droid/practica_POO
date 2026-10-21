@@ -1,0 +1,473 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowTitle">
+   <string>Practical 01 — управление полётом БПЛА</string>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1160</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="rootLayout">
+    <property name="leftMargin">
+     <number>18</number>
+    </property>
+    <property name="rightMargin">
+     <number>18</number>
+    </property>
+    <property name="topMargin">
+     <number>18</number>
+    </property>
+    <property name="bottomMargin">
+     <number>18</number>
+    </property>
+    <property name="spacing">
+     <number>10</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="eyebrow">
+      <property name="text">
+       <string>ПРАКТИКА 01   /   ЗАДАНИЕ 1   /   ВАРИАНТ 1</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="title">
+      <property name="text">
+       <string>Управление полётом БПЛА</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="subtitle">
+      <property name="text">
+       <string>Взлёт, маршрут и посадка · интерактивная учебная модель</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="toolbar">
+      <item>
+       <widget class="QLabel" name="newIdCaption">
+        <property name="text">
+         <string>Идентификатор нового аппарата</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="idSpin">
+        <property name="maximum">
+         <number>9999999</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="createButton">
+        <property name="text">
+         <string>Создать аппарат</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="resetButton">
+        <property name="text">
+         <string>Исходное состояние</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="toolbarSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="modelLabel">
+        <property name="text">
+         <string>Модель класса Drone</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="metrics">
+      <item>
+       <widget class="QFrame" name="idCard">
+        <layout class="QVBoxLayout" name="idLayout">
+         <item>
+          <widget class="QLabel" name="idCaption">
+           <property name="text">
+            <string>Активный аппарат</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="idValue">
+           <property name="text">
+            <string>№ 0</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="flightCard">
+        <layout class="QVBoxLayout" name="flightLayout">
+         <item>
+          <widget class="QLabel" name="flightCaption">
+           <property name="text">
+            <string>Состояние полёта</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="flightValue">
+           <property name="text">
+            <string>Не летит</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="altitudeCard">
+        <layout class="QVBoxLayout" name="altitudeLayout">
+         <item>
+          <widget class="QLabel" name="altitudeCaption">
+           <property name="text">
+            <string>Текущая высота</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="altitudeValue">
+           <property name="text">
+            <string>0,00 м</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="batteryCard">
+        <layout class="QVBoxLayout" name="batteryLayout">
+         <item>
+          <widget class="QLabel" name="batteryCaption">
+           <property name="text">
+            <string>Заряд аккумулятора</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="batteryValue">
+           <property name="text">
+            <string>100,00%</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="bodyLayout">
+      <item>
+       <widget class="QFrame" name="scenePanel">
+        <layout class="QVBoxLayout" name="sceneLayout">
+         <item>
+          <widget class="QLabel" name="sceneTitle">
+           <property name="text">
+            <string>План полёта и высота</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="FlightScene" name="flightScene">
+           <property name="minimumSize">
+            <size>
+             <width>400</width>
+             <height>200</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="sceneHint">
+           <property name="text">
+            <string>Синий — маршрут · оранжевый — целевая точка · высота показана справа</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="positionValue">
+           <property name="text">
+            <string>X: 0,00 м   Y: 0,00 м   Z: 0,00 м</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="controlPanel">
+        <property name="minimumSize">
+         <size>
+          <width>310</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>340</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <layout class="QVBoxLayout" name="controlLayout">
+         <property name="spacing">
+          <number>7</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="targetTitle">
+           <property name="text">
+            <string>Целевая точка</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="targetXSpinLayout">
+           <item>
+            <widget class="QLabel" name="targetXSpinCaption">
+             <property name="text">
+              <string>X, м</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="targetXSpin">
+             <property name="minimum">
+              <double>-1000000</double>
+             </property>
+             <property name="maximum">
+              <double>1000000</double>
+             </property>
+             <property name="value">
+              <double>10</double>
+             </property>
+             <property name="keyboardTracking">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="targetYSpinLayout">
+           <item>
+            <widget class="QLabel" name="targetYSpinCaption">
+             <property name="text">
+              <string>Y, м</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="targetYSpin">
+             <property name="minimum">
+              <double>-1000000</double>
+             </property>
+             <property name="maximum">
+              <double>1000000</double>
+             </property>
+             <property name="value">
+              <double>20</double>
+             </property>
+             <property name="keyboardTracking">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="targetZSpinLayout">
+           <item>
+            <widget class="QLabel" name="targetZSpinCaption">
+             <property name="text">
+              <string>Z, м</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="targetZSpin">
+             <property name="minimum">
+              <double>-1000000</double>
+             </property>
+             <property name="maximum">
+              <double>1000000</double>
+             </property>
+             <property name="value">
+              <double>50</double>
+             </property>
+             <property name="keyboardTracking">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="moveButton">
+           <property name="text">
+            <string>Переместить в точку</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="positionButton">
+           <property name="text">
+            <string>Задать исходные координаты</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="flightActions">
+           <item>
+            <widget class="QPushButton" name="takeoffButton">
+             <property name="text">
+              <string>Взлёт</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="landButton">
+             <property name="text">
+              <string>Посадка</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="chargeLayout">
+           <item>
+            <widget class="QLabel" name="chargeCaption">
+             <property name="text">
+              <string>Заряд, %</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="chargeSpin">
+             <property name="minimum">
+              <double>-1000</double>
+             </property>
+             <property name="maximum">
+              <double>1000</double>
+             </property>
+             <property name="value">
+              <double>100</double>
+             </property>
+             <property name="keyboardTracking">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="chargeButton">
+           <property name="text">
+            <string>Установить заряд</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="emergencyButton">
+           <property name="text">
+            <string>АВАРИЙНАЯ ПОСАДКА</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="feedbackLabel">
+      <property name="text">
+       <string>Аппарат создан. Для перемещения сначала выполните взлёт.</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPlainTextEdit" name="eventLog">
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>75</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>95</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="footerLabel">
+      <property name="text">
+       <string>Взлёт: заряд ≥ 10% · Перемещение: заряд ≥ 5% · Аварийная посадка: при любом заряде</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <property name="styleSheet">
+   <string>
+QMainWindow, QWidget#centralwidget { background: #f1f5fb; }
+QWidget { font-family: 'Segoe UI'; font-size: 10pt; color: #263950; }
+QLabel#eyebrow { color: #3976cf; font-size: 9pt; }
+QLabel#title { font-size: 25pt; color: #172e4d; font-weight: 700; }
+QLabel#subtitle, QLabel#sceneHint, QLabel#footerLabel, QLabel#modelLabel { color: #7a879b; font-size: 9pt; }
+QFrame#scenePanel, QFrame#controlPanel, QFrame#idCard, QFrame#flightCard, QFrame#altitudeCard, QFrame#batteryCard { background: white; border: 1px solid #dfe6f1; border-radius: 9px; }
+QLabel#idValue, QLabel#flightValue, QLabel#altitudeValue, QLabel#batteryValue { font-size: 23pt; font-weight: 600; color: #2568ce; }
+QLabel#idCaption, QLabel#flightCaption, QLabel#altitudeCaption, QLabel#batteryCaption { color: #7a879b; font-size: 9pt; }
+QLabel#sceneTitle, QLabel#targetTitle { font-size: 12pt; font-weight: 600; }
+QLabel#positionValue { color: #456287; }
+QPushButton { background: white; border: 1px solid #d3deed; border-radius: 5px; padding: 7px 11px; }
+QPushButton:hover { background: #edf3fe; border-color: #7da7eb; }
+QPushButton#moveButton, QPushButton#takeoffButton { background: #3976ec; color: white; border: none; }
+QPushButton#emergencyButton { background: #c9444a; color: white; border: none; padding: 11px; font-weight: 600; }
+QDoubleSpinBox, QSpinBox { padding: 4px; background: white; border: 1px solid #d3deed; border-radius: 4px; }
+QLabel#feedbackLabel { color: #315e99; }
+QPlainTextEdit { background: #15263e; color: #d7e5fa; border: none; border-radius: 7px; padding: 6px; font-family: Consolas; font-size: 9pt; }
+</string>
+  </property>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>FlightScene</class>
+   <extends>QWidget</extends>
+   <header>flight_scene.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources />
+ <connections />
+</ui>

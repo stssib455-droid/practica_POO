@@ -1,0 +1,6 @@
+build/
+build-*/
+*.user
+*.user.*
+.qt/
+.qtc_clangd/
